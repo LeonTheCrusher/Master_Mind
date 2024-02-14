@@ -28,14 +28,12 @@ impl Color {
             _ => Color::Blank,
         }
     }
-}
-impl Color {
     fn as_str(&self) -> &'static str {
         match *self {
             Color::Red => "Red",
             Color::Green => "Green",
             Color::Blue => "Blue",
-            Color::Blank => "Blank",
+            Color::Blank => "     ",
             Color::White => "White",
         }
     }
@@ -69,7 +67,7 @@ fn main() {
 fn print_board(row: &Row, end: &bool) {
     let length: usize = [&row.peg_one, &row.peg_two, &row.peg_three, &row.peg_four]
         .iter()
-        .map(|peg| peg.as_str().trim().len())
+        .map(|peg| peg.as_str().len())
         .sum::<usize>()
         + 11;
 
@@ -82,8 +80,11 @@ fn print_board(row: &Row, end: &bool) {
 
     println!(
         // prints the peg colors
-        "| {:?} | {:?} | {:?} | {:?} |",
-        row.peg_one, row.peg_two, row.peg_three, row.peg_four
+        "| {} | {} | {} | {} |",
+        row.peg_one.as_str(),
+        row.peg_two.as_str(),
+        row.peg_three.as_str(),
+        row.peg_four.as_str()
     );
 
     if *end == true {
