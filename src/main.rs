@@ -43,6 +43,28 @@ impl Color {
 }
 
 fn main() {
+    println!("Welcome to MASTERMIND");
+
+    println!("Mastermind is a code-breaking game where you, the codebreaker, try to guess the secret code created by me, the codemaker.");
+    println!("Here's how the game works:");
+
+    println!("1. Each round, you will pick 4 colors: Red, Blue, Green, or White.");
+    println!("2. Duplicates are allowed, so you can choose the same color multiple times.");
+    println!("3. After you make your guess, I will assess how close you are to my code.");
+
+    println!("Scoring:\n");
+    println!("   - If you get the right color in the right space, you receive one black point.");
+    println!("   - If you choose a color that is in my code but not in the correct spot, you receive one white peg.");
+
+    println!("The game ends when either you run out of turns or you correctly guess my code.");
+    println!("Good Luck!");
+    println!("Press any key to continue...");
+    io::stdout().flush().unwrap();
+    let mut input = String::new();
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read line");
+
     let secret_row: Row = Row {
         peg_one: crate::Color::random_color(),
         peg_two: crate::Color::random_color(),
